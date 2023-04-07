@@ -1,0 +1,26 @@
+server:
+  port: 9981
+spring:
+  application:
+    name: mall-system-user-provider
+  profiles:
+    active: pro
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.190:8848
+      config:
+        server-addr: 192.168.0.190:8848
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+
+dubbo:
+  application:
+    name: mall-system-user-provider
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: fastjson2
+  registry:
+    address: nacos://192.168.0.190:8848

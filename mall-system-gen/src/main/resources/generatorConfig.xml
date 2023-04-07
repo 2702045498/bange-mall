@@ -1,0 +1,70 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--引入外部文件-->
+    <properties resource="db.properties"/>
+ 
+    <context id="dsql" targetRuntime="MyBatis3DynamicSql">
+        <!--识别关键字 使用分隔符``进行分隔   在 oracle 中是双引号 (")，在 MySQL 中需配置为反引号 (`)  -->
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- 生成的 Java 文件的编码   -->
+        <property name="JavaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 Java 代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- 使生成的 Model 实现 Serializable 接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--  为生成的 Model 覆写 toString() 方法 -->
+<!--        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+        <!--  为生成的 Model 覆写 equals() 和 hashCode() 方法 -->
+<!--        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
+        <!--  配置注释生成器 type="com.bange.gen.config.MySQLCommentGenerator"-->
+        <commentGenerator  type="com.bange.gen.config.MySQLCommentGenerator">
+            <!--  不生成所有注释，默认为 false  -->
+            <property name="suppressAllComments" value="true"/>
+            <!--  生成的注释中不包含时间信息，默认为 false -->
+            <property name="suppressDate" value="true"/>
+            <!--  生成的注释中，时间的显示格式 -->
+            <property name="dateFormat" value="yyyy/MM/dd"/>
+            <!-- 是否添加数据库表中字段的注释，默认为 false  -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <!--引入数据库连接-->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.userName}"
+                        password="${jdbc.password}">
+            <!--  若为 8.0 版本以上的 mysql-connector-java 驱动，需要设置 nullCatalogMeansCurrent = true -->
+              <property name="nullCatalogMeansCurrent" value="true"/>
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+        <!--  配置类型转换规则  -->
+        <javaTypeResolver>
+            <!-- 是否强制使用 BigDecimal；
+                默认为 false，把 JDBC 的 DECIMAL 和 NUMERIC 类型解析为 Integer；
+                设置为 true 时，把 JDBC 的 DECIMAL 和 NUMERIC 类型解析为 java.math.BigDecimal -->
+            <property name="forceBigDecimals" value="true"/>
+
+            <!-- 设置时间类型的转换，
+               默认 false，将所有 JDBC 的时间类型解析为 java.util.Date；
+               设置为 true 时，将 JDBC 的时间类型按如下规则解析：
+                    DATE        -> java.time.LocalDate
+                    TIME        -> java.time.LocalTime
+                    TIMESTAMP      -> java.time.LocalDateTime
+                    TIME_WITH_TIMEZONE      -> java.time.OffsetTime
+                    TIMESTAMP_WITH_TIMEZONE     -> java.time.OffsetDateTime
+                -->
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+        <!--  配置 Java 模型生成器 -->
+        <javaModelGenerator targetPackage="com.bange.gen.model" targetProject="mall-system-gen/src/main/java"/>
+        <!--  关于 Mapper 接口的生成 -->
+        <javaClientGenerator targetPackage="com.bange.gen.mapper" targetProject="mall-system-gen/src/main/java"/>
+        <!-- 配置需要生成代码的数据库表 -->
+        <table tableName="system_user" domainObjectName="SystemUser" />
+    </context>
+</generatorConfiguration>
