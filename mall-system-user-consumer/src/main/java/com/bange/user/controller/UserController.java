@@ -4,7 +4,6 @@ import com.bange.mall.entity.SystemUser;
 import com.bange.mall.entity.UserAddress;
 import com.bange.mall.service.UserService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.bouncycastle.jcajce.provider.digest.MD5;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
