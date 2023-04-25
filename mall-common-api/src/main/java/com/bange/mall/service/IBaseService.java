@@ -3,11 +3,11 @@ package com.bange.mall.service;
 
 import java.util.List;
 
-public abstract class IBaseService<T> {
+public interface  IBaseService<T> {
 
-    public abstract T query(T t);
-    public abstract List<T> queryList(T t);
-    public abstract int save(T t);
-    public abstract int edit(T t);
-    public abstract int remove(T t);
+    public  T query(T t);
+    public  List<T> queryList(T t);
+    public  int save(T t);
+    public  int edit(T t);
+    public  int remove(T t);
 }

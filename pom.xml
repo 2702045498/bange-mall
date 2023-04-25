@@ -17,6 +17,10 @@
         <module>mall-system-user-provider</module>
         <module>mall-system-user-consumer</module>
         <module>mall-system-gen</module>
+        <module>mall-system-order-provider</module>
+        <module>mall-system-order-consumer</module>
+        <module>mall-system-commodity-provider</module>
+        <module>mall-system-commodity-consumer</module>
     </modules>
 
     <properties>
@@ -34,6 +38,7 @@
         <mysql-connect-java.version>8.0.29</mysql-connect-java.version>
         <mybatis-generator-core.version>1.4.0</mybatis-generator-core.version>
         <druid.version>1.2.15</druid.version>
+        <seata.version>1.6.1</seata.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -108,6 +113,14 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+
+            <!--seata-spring-boot-starter -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>
@@ -115,11 +128,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <source>${java.version}</source>-->
+<!--                    <target>${java.version}</target>-->
+<!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>

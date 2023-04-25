@@ -17,13 +17,26 @@ spring:
 
 dubbo:
   application:
-    name: mall-system-user-consumer
+    name: ${spring.application.name}
   protocol:
     name: dubbo
     port: -1
     serialization: fastjson2
   registry:
     address: nacos://192.168.0.190:8848
+    group: DUBBO_GROUP
   consumer:
     timeout: 3000
     check: false
+
+seata:
+  application-id: ${spring.application.name}
+  enabled: true
+  tx-service-group: SEATA_GROUP
+  service:
+    vgroup-mapping:
+      warehouse-service-seata-service-group: default
+    enable-degrade: false
+    disable-global-transaction: false
+    grouplist:
+      default: 192.168.0.190:8091

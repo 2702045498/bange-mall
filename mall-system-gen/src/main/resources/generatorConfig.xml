@@ -65,6 +65,10 @@
         <!--  关于 Mapper 接口的生成 -->
         <javaClientGenerator targetPackage="com.bange.gen.mapper" targetProject="mall-system-gen/src/main/java"/>
         <!-- 配置需要生成代码的数据库表 -->
-        <table tableName="system_user" domainObjectName="SystemUser" />
+        <table tableName="sys_menu" domainObjectName="SysMenu" />
+        <table tableName="sys_role" domainObjectName="SysRole" />
+        <table tableName="sys_role_menu" domainObjectName="SysRoleMenu" />
+        <table tableName="sys_user" domainObjectName="SysUser" />
+        <table tableName="sys_user_role" domainObjectName="SysUserRole" />
     </context>
 </generatorConfiguration>

@@ -1,0 +1,51 @@
+server:
+  port: 9984
+spring:
+  application:
+    name: mall-system-order-consumer
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.190:8848
+      config:
+        server-addr: 192.168.0.190:8848
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+
+dubbo:
+  application:
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: fastjson2
+  registry:
+    address: nacos://192.168.0.190:8848
+  consumer:
+    timeout: 3000
+    check: false
+#seata:
+#  application-id: ${spring.application.name}
+#  tx-service-group: SEATA_GROUP
+#  config:
+#    type: nacos
+#    nacos:
+#      namespace:
+#      server-addr: 192.168.0.190:8848
+#      group: SEATA_GROUP
+#      username: nacos
+#      password: nacos
+#  registry:
+#    type: nacos
+#    nacos:
+#      namespace:
+#      server-addr: 192.168.0.190:8848
+#      group: SEATA_GROUP
+#      username: nacos
+#      password: nacos
+#      application: seata-server
+
+

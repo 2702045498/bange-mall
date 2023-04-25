@@ -1,7 +1,7 @@
 package com.bange.user.mapper;
 
 
-import com.bange.mall.entity.SystemUser;
+import com.bange.mall.entity.user.SystemUser;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.dynamic.sql.BasicColumn;
